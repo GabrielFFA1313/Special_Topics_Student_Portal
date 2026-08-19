@@ -23,7 +23,7 @@ const sampleStudent: Student = {
   id: 3,
   name: "Gabriel Francis Araneta",
   email: "s.araneta.gabrielfrancis@cmu.edu.ph",
-  status: "active"
+  status: "active",
 };
 
 // part 6
@@ -32,15 +32,20 @@ console.log(formatStudent(sampleStudent));
 
 const singleResponse: ApiResponse<Student> = {
   success: true,
-  data: sampleStudent
+  data: sampleStudent,
 };
 
 const listResponse: ApiResponse<Student[]> = {
   success: true,
   data: [
     sampleStudent,
-    { id: 2, name: "Maria Santos", email: "maria.santos@example.edu", status: "inactive" }
-  ]
+    {
+      id: 2,
+      name: "Maria Santos",
+      email: "maria.santos@example.edu",
+      status: "inactive",
+    },
+  ],
 };
 
 console.log(singleResponse);
@@ -86,4 +91,16 @@ console.log("Valid object:", isStudent(validCandidate)); // true
 console.log("Invalid id:", isStudent(invalidId)); // false
 console.log("Missing name:", isStudent(missingName)); // false
 
-// Part 8
+// Part 18
+export type StudentStatus = "active" | "inactive";
+
+export function getStudentStatusLabel(status: StudentStatus): string {
+  if (status === "active") {
+    return "Active Student";
+  }
+  return "Inactive Student";
+}
+
+console.log(getStudentStatusLabel("active")); // "Active Student"
+console.log(getStudentStatusLabel("inactive")); // "Inactive Student"
+// console.log(getStudentStatusLabel("suspended"));  // "Unknown Status" (safe handling)
