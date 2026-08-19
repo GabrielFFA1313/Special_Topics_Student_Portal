@@ -1,0 +1,4 @@
+@"
+node_modules
+dist
+"@ | Out-File -FilePath ".prettierignore" -Encoding utf8
